@@ -1,4 +1,4 @@
 task main()
 {
- motor
+ motor(motorB) = 50
 }
