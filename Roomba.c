@@ -11,24 +11,24 @@ task main()
 	  motor(right) = 50;
 	  wait1Msec(50);
 
-	  while(SensorValue(sonar) > 5){
-	  	motor(left) = 70;
+	  if (SensorValue(sonar) > 10){
+	  	motor(left) = 55;
 	  	motor(right) = 50;
-	  	wait1Msec(100);
+	  	wait1Msec(50);
 	  }
-	  while(SensorValue(sonar) < 5){
+	  else if(SensorValue(sonar) < 10){
 	  	motor(left) = 50;
-	  	motor(right) = 70;
-	  	wait1Msec(100);
+	  	motor(right) = 55;
+	  	wait1Msec(50);
 	  }
 	  if(SensorValue(button) == 1){
-	  	motor(left) = -50;
+	  	motor(left) = -40;
 	  	motor(right) = -50;
 	  	wait1Msec(1200);
 
-	  	motor(left) = 20;
+	  	motor(left) = -50;
 	  	motor(right) = 50;
-	  	wait1Msec(2000);
+	  	wait1Msec(875);
   	}
   }
 
