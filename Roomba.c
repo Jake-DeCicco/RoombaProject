@@ -21,6 +21,15 @@ task main()
 	  	motor(right) = 70;
 	  	wait1Msec(100);
 	  }
+	  if(SensorValue(button) == 1){
+	  	motor(left) = -50;
+	  	motor(right) = -50;
+	  	wait1Msec(1200);
+
+	  	motor(left) = 20;
+	  	motor(right) = 50;
+	  	wait1Msec(2000);
+  	}
   }
 
 }
