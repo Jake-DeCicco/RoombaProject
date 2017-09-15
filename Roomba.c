@@ -11,14 +11,14 @@ task main()
 	  motor(right) = 50;
 	  wait1Msec(50);
 
-	  if(SensorValue(sonar) > 5){
-	  	motor(left) = 55;
+	  while(SensorValue(sonar) > 5){
+	  	motor(left) = 70;
 	  	motor(right) = 50;
 	  	wait1Msec(100);
 	  }
-	  else if(SensorValue(sonar) < 5){
+	  while(SensorValue(sonar) < 5){
 	  	motor(left) = 50;
-	  	motor(right) = 55;
+	  	motor(right) = 70;
 	  	wait1Msec(100);
 	  }
   }
