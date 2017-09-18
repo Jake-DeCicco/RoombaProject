@@ -24,7 +24,7 @@ task main()
 				wait1Msec(50);
 			}
 
-			if (SensorValue(button) == 1)
+			if (SensorValue(button) == 1)                //hi JAKE
 			{
 				motor(left)= -100;
 				motor(right) = -100;
