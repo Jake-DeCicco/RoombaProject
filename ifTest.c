@@ -1,3 +1,4 @@
+#pragma config(Sensor, S3,     topButton,      sensorNone)
 #pragma config(Sensor, S4,     button,         sensorEV3_Touch)
 #pragma config(Motor,  motorB,          left,          tmotorEV3_Large, PIDControl, encoder)
 #pragma config(Motor,  motorC,          right,         tmotorEV3_Large, PIDControl, encoder)
@@ -19,7 +20,17 @@ task main()
 
 				motor(left) = 50;
 				motor(right) = -50;
-				wait1Msec(875);
+				wait1Msec(960);
+			}
+			if (SensorValue(topButton) == 1)
+			{
+					motor(left)= -100;
+				motor(right) = -100;
+				wait1Msec(1000);
+
+				motor(left) = 50;
+				motor(right) = -50;
+				wait1Msec(960);
 			}
 		}
 

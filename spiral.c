@@ -11,6 +11,11 @@ task main()
 
   while(counter < 101)
   {
+  	motor(right) = 100;
+  	motor(left) = speed;
+  	wait1Msec(200);
 
+  	counter = counter + 1;
+  	speed = speed + 1;
   }
 }
