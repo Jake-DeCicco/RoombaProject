@@ -1,7 +1,4 @@
 
-task main()
+task main()// be cool
 {
-
-
-
 }

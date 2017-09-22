@@ -13,7 +13,7 @@ task main()
   {
   	motor(right) = 100;
   	motor(left) = speed;
-  	wait1Msec(200);
+  	wait1Msec(1000);
 
   	counter = counter + 1;
   	speed = speed + 1;
