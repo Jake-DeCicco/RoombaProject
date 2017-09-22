@@ -15,12 +15,12 @@ task main()
 
 			if (SensorValue(sonar) > 10)
 			{
-				motor(left) = defaultSpeed + 1;
+				motor(left) = defaultSpeed + 10;
 				wait1Msec(50);
 			}
 			if (SensorValue(sonar) < 10)
 			{
-				motor(left) = defaultSpeed - 1;
+				motor(left) = defaultSpeed - 10;
 				wait1Msec(50);
 			}
 
