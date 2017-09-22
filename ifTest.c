@@ -10,23 +10,13 @@ task main()
 		{
 			motor(left) = 100;
 			motor(right) = 100;
-			wait1Msec(100);
+			wait1Msec(50);
 
 			if (SensorValue(button) == 1)
 			{
 				motor(left)= -100;
 				motor(right) = -100;
-				wait1Msec(1000);
-
-				motor(left) = 50;
-				motor(right) = -50;
-				wait1Msec(960);
-			}
-			if (SensorValue(topButton) == 1)
-			{
-					motor(left)= -100;
-				motor(right) = -100;
-				wait1Msec(1000);
+				wait1Msec(1500);
 
 				motor(left) = 50;
 				motor(right) = -50;
