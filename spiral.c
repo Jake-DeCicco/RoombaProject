@@ -7,34 +7,17 @@
 
 task main()
 {
-  int speed = 20;
-  int time = 1000;
+  int speed = 0;
   int counter = 0;
 
 
-  while(counter < 40)
+  while(counter < 100)
   {
   	motor(right) = 100;
   	motor(left) = speed;
-  	wait1Msec(time);
+  	wait1Msec(500);
 
-  	counter = counter + 2;
-  	time = time - 10;
-  	speed = speed + 2;
+  	counter = counter + 1;
+  	speed = speed + 1;
   }
-  /*while(counter == 80)
-  {
-  	motor(right) = 75;
-  	motor(left) = 75;
-  	wait1Msec(100);
-
-  	if(SensorValue(button) == 1)
-  	{
-  		motor(left) = -75;
-  		motor(right) = -75;
-  		wait1Msec(650);
-
-    }
-
-  }*/
 }
