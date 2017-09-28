@@ -1,5 +1,5 @@
 #pragma config(Sensor, S1,     gyro,           sensorEV3_Gyro)
-#pragma config(Sensor, S2,     sonar,          sensorEV3_Ultrasonic)
+#pragma config(Sensor, S2,     wallButton,     sensorEV3_Touch)
 #pragma config(Sensor, S4,     button,         sensorEV3_Touch)
 #pragma config(Motor,  motorB,          left,          tmotorNXT, PIDControl, encoder)
 #pragma config(Motor,  motorC,          right,         tmotorNXT, PIDControl, encoder)
@@ -7,17 +7,31 @@
 
 task main()
 {
-  int speed = 0;
+  int leftSpeed = 10;
   int counter = 0;
+  int rightSpeed = 40;
+  int time = 0;
 
-
-  while(counter < 100)
+  while(counter < 91 && time < 2100)
   {
-  	motor(right) = 100;
-  	motor(left) = speed;
-  	wait1Msec(500);
+  	motor(left) = leftSpeed;
+  	motor(right) = rightSpeed;
+  	wait1Msec(300);
 
   	counter = counter + 1;
-  	speed = speed + 1;
+  	leftSpeed = leftSpeed + 1;
+  	rightSpeed = rightSpeed + 1;
+  	time = time + 300;
+  }
+  while(counter >= 91 && time >= 21000 && time < 39000)
+  {
+  	motor(left) = leftSpeed;
+  	motor(right) = rightSpeed;
+  	wait1Msec(300);
+
+  	counter = counter + 1;
+  	rightSpeed = rightSpeed - 3;
+  	leftSpeed = leftSpeed - 1;
+  	time = time + 300;
   }
 }
