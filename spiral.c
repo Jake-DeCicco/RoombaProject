@@ -10,9 +10,8 @@ task main()
   int leftSpeed = 10;
   int counter = 0;
   int rightSpeed = 40;
-  int time = 0;
 
-  while(counter < 91 && time < 2100)
+  while(counter < 91)
   {
   	motor(left) = leftSpeed;
   	motor(right) = rightSpeed;
@@ -21,17 +20,5 @@ task main()
   	counter = counter + 1;
   	leftSpeed = leftSpeed + 1;
   	rightSpeed = rightSpeed + 1;
-  	time = time + 300;
-  }
-  while(counter >= 91 && time >= 21000 && time < 39000)
-  {
-  	motor(left) = leftSpeed;
-  	motor(right) = rightSpeed;
-  	wait1Msec(300);
-
-  	counter = counter + 1;
-  	rightSpeed = rightSpeed - 3;
-  	leftSpeed = leftSpeed - 1;
-  	time = time + 300;
   }
 }
