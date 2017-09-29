@@ -12,10 +12,17 @@ float calcDrift()
 	wait1Msec(500);
 	for (int i = 0; i < 10; i ++)
 	{
+		wait1Msec(250);
 		float totalDrift =  SensorValue(gyro) + totalDrift;
 	}
 	float avgDrift = totalDrift / 10.0;
 	return avgDrift;
+}
+
+static float calcDegree(int degree)
+{
+   float time = degree * 3.26388888889;
+   return time;
 }
 
 task main()
@@ -28,11 +35,19 @@ task main()
   wait1Msec(1000);
 
   int drift = calcDrift();
-
-  if (SensorValue(gyro) - drift > 5 || SensorValue(gyro) - drift  < -5)
+  /*
+  if (SensorValue(gyro) - drift > 10)
   {
 
   }
-
+  */
+  while (true)
+  {
+  if(SensorValueFloat(gyro) - drift  > 180 || SensorValueFloat(gyro) - drift  < -100 )
+  {
+  	  motor(sonarPeg) = 20;
+  	  wait1Msec(calcDegree(SensorValue(gyro) - drift));
+  }
+}
 
 }
