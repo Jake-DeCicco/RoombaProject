@@ -12,51 +12,56 @@ task main()
 	 int defSpeed = 50;
 	 int exit = 1;
 
-   resetMotorEncoder(left);
-   resetMotorEncoder(right);
+
 	 while (true)
  {
    if (mode == 0) // mode 0 is wall follow
    {
 
+     resetMotorEncoder(left);
+     resetMotorEncoder(right);
+     int exitZero = 0;
+	 	 while (exitZero == 0)
+	 	 {
 
-	 	 int counter = 0;
-		 motor(left) = defSpeed + 10;
-		 motor(right) = defSpeed;
+			 motor(left) = defSpeed + 10;
+			 motor(right) = defSpeed;
 
 
-		 wait1Msec(250);
+			 wait1Msec(250);
 
-		 if(SensorValue(buttonTwo) == 1)
-		 {
-		   motor(left) = -defSpeed;
-		   motor(right) = -defSpeed;
-		   wait1Msec(500);
-
-		   motor(left) = -defSpeed;
-		   motor(right) = defSpeed;
-		   wait1Msec(960 / 2);
-		   counter ++;
-		 }
-
-		 if (SensorValue(button) == 1)
-		 {
-		   for( int i = 0; i < 10; i++)
-		   {
-			   motor(left) = -defSpeed + 2;
+			 if(SensorValue(buttonTwo) == 1)
+			 {
+			   motor(left) = -defSpeed;
 			   motor(right) = -defSpeed;
-			   wait1Msec(50);
+			   wait1Msec(500);
+
+			   motor(left) = -defSpeed;
+			   motor(right) = defSpeed;
+			   wait1Msec(960 / 2);
 
 			 }
-			  motor(left) = -defSpeed;
-		   	motor(right) = defSpeed;
-		    wait1Msec(960 / 2);
-		 }
 
-		 if(getMotorEncoder(left) + getMotorEncoder(right) >=  5000)
-		 {
-		   mode = 2;
-		 }
+			 if (SensorValue(button) == 1)
+			 {
+			   for( int i = 0; i < 10; i++)
+			   {
+				   motor(left) = -defSpeed + 2;
+				   motor(right) = -defSpeed;
+				   wait1Msec(50);
+
+				 }
+				  motor(left) = -defSpeed;
+			   	motor(right) = defSpeed;
+			    wait1Msec(960 / 2);
+			 }
+
+			 if(getMotorEncoder(left) + getMotorEncoder(right) >=  10000)
+			 {
+			   mode = 2;
+			   exitZero = 1;
+			 }
+		}
 
 	 }
 	 if ( mode == 1) // mode 1 is spiral
@@ -69,10 +74,11 @@ task main()
   		{
 		  	motor(left) = leftSpeed;
 		  	motor(right) = rightSpeed;
-		  	wait1Msec(375);
+
 
 		  	leftSpeed = leftSpeed + 1;
 		  	rightSpeed = rightSpeed + 1;
+		  	wait1Msec(375);
 
 		  	if (SensorValue(button) == 1 || SensorValue(buttonTwo) == 1)
 		  	{
@@ -90,7 +96,7 @@ task main()
 
 	   motor(left) = -defSpeed;
 		 motor(right) = defSpeed;
-		 wait1Msec(960);
+		 wait1Msec(960/2);
 
 		 resetMotorEncoder(left);
 		 resetMotorEncoder(right);
