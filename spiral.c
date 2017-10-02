@@ -8,16 +8,15 @@
 task main()
 {
   int leftSpeed = 10;
-  int counter = 0;
+
   int rightSpeed = 40;
 
-  while(counter < 91)
+  while(true)
   {
   	motor(left) = leftSpeed;
   	motor(right) = rightSpeed;
-  	wait1Msec(300);
+  	wait1Msec(375);
 
-  	counter = counter + 1;
   	leftSpeed = leftSpeed + 1;
   	rightSpeed = rightSpeed + 1;
   }

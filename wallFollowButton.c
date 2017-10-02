@@ -7,17 +7,23 @@
 
 task main()
 {
+
+	 int mode = 1;
 	 int defSpeed = 50;
-	 int counter = 0;
-	 int mode = 0;
+	 int exit = 1;
 
-
+   resetMotorEncoder(left);
+   resetMotorEncoder(right);
 	 while (true)
  {
    if (mode == 0) // mode 0 is wall follow
    {
+
+
+	 	 int counter = 0;
 		 motor(left) = defSpeed + 10;
 		 motor(right) = defSpeed;
+
 
 		 wait1Msec(250);
 
@@ -32,6 +38,7 @@ task main()
 		   wait1Msec(960 / 2);
 		   counter ++;
 		 }
+
 		 if (SensorValue(button) == 1)
 		 {
 		   for( int i = 0; i < 10; i++)
@@ -46,10 +53,66 @@ task main()
 		    wait1Msec(960 / 2);
 		 }
 
-	 }
-	 if ( mode == 1)
-	 {
+		 if(getMotorEncoder(left) + getMotorEncoder(right) >=  5000)
+		 {
+		   mode = 2;
+		 }
 
+	 }
+	 if ( mode == 1) // mode 1 is spiral
+	 {
+			int leftSpeed = 10;
+  		int rightSpeed = 40;
+
+
+  		while( exit == 1)
+  		{
+		  	motor(left) = leftSpeed;
+		  	motor(right) = rightSpeed;
+		  	wait1Msec(375);
+
+		  	leftSpeed = leftSpeed + 1;
+		  	rightSpeed = rightSpeed + 1;
+
+		  	if (SensorValue(button) == 1 || SensorValue(buttonTwo) == 1)
+		  	{
+		  		mode = 0;
+		  		exit = 0;
+		  	}
+  		}
+	 }
+
+	 if ( mode == 2) // mode two is going out into the world
+	 {
+	   motor(left) = -defSpeed;
+	   motor(right) = -defSpeed;
+	   wait1Msec(750);
+
+	   motor(left) = -defSpeed;
+		 motor(right) = defSpeed;
+		 wait1Msec(960);
+
+		 resetMotorEncoder(left);
+		 resetMotorEncoder(right);
+		 while ( exit == 0)
+		 {
+
+		   motor(left) = defSpeed;
+		   motor(right) = defSpeed;
+
+       wait1Msec(250);
+		   if (SensorValue(button) == 1 || SensorValue(buttonTwo) == 1)
+		   {
+		     mode = 0;
+		     exit = 1;
+		   } else if (getMotorEncoder(left) + getMotorEncoder(right) >= 10000)
+		   {
+		     mode = 1;
+		     exit = 1;
+		   }
+
+
+		 }
 	 }
 
  } // end of while
