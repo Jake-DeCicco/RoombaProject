@@ -23,7 +23,7 @@ task main()
      int exitZero = 0;
 	 	 while (exitZero == 0)
 	 	 {
-
+			 exitZero = 0;
 			 motor(left) = defSpeed + 10;
 			 motor(right) = defSpeed;
 
@@ -100,6 +100,8 @@ task main()
 
 		 resetMotorEncoder(left);
 		 resetMotorEncoder(right);
+
+		 exit = 0;
 		 while ( exit == 0)
 		 {
 
